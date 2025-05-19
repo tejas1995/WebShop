@@ -113,6 +113,7 @@ class WebAgentTextEnv(gym.Env):
 
         # Update observation, state with the new action
         ob = self.observation
+        #print(ob)
         text_list = [ob]
         self.prev_actions.append(action)
         for i in range(1, 1 + max(self.num_prev_obs, self.num_prev_actions)):

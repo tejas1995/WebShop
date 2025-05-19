@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Displays information on how to use script
+# # Displays information on how to use script
 helpFunction()
 {
   echo "Usage: $0 [-d small|all]"
@@ -8,7 +8,7 @@ helpFunction()
   exit 1 # Exit script after printing help
 }
 
-# Get values of command line flags
+# # Get values of command line flags
 while getopts d: flag
 do
   case "${flag}" in
@@ -21,14 +21,15 @@ if [ -z "$data" ]; then
   helpFunction
 fi
 
-# Install Python Dependencies
-pip install -r requirements.txt;
+# # Install Python Dependencies
+# pip install -r requirements.txt;
 
 # Install Environment Dependencies via `conda`
-conda install -c pytorch faiss-cpu;
-conda install -c conda-forge openjdk=11;
+# conda install -c pytorch faiss-cpu;
+# pip install faiss-cpu;
+# conda install -c conda-forge openjdk=11;
 
-# Download dataset into `data` folder via `gdown` command
+# # Download dataset into `data` folder via `gdown` command
 mkdir -p data;
 cd data;
 if [ "$data" == "small" ]; then
@@ -38,14 +39,14 @@ elif [ "$data" == "all" ]; then
   gdown https://drive.google.com/uc?id=1A2whVgOO0euk5O13n2iYDM0bQRkkRduB; # items_shuffle
   gdown https://drive.google.com/uc?id=1s2j6NgHljiZzQNL3veZaAiyW_qDEgBNi; # items_ins_v2
 else
-  echo "[ERROR]: argument for `-d` flag not recognized"
+  echo "[ERR OR]: argument for `-d` flag not recognized"
   helpFunction
 fi
 gdown https://drive.google.com/uc?id=14Kb5SPBk_jfdLZ_CDBNitW98QLDlKR5O # items_human_ins
 cd ..
 
-# Download spaCy large NLP model
-python -m spacy download en_core_web_lg
+# # Download spaCy large NLP model
+# python -m spacy download en_core_web_sm
 
 # Build search engine index
 cd search_engine
